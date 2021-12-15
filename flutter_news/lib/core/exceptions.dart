@@ -1,7 +1,7 @@
 class ServerException implements Exception {
   final String message;
 
-  ServerException({required this.message});
+  const ServerException({required this.message});
 }
 
 class CacheException implements Exception {}

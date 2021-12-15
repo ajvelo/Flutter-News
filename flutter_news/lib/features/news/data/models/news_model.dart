@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter_news/features/news/data/models/source_model.dart';
 import 'package:flutter_news/features/news/domain/entities/news.dart';
 import 'package:flutter_news/features/news/domain/entities/source.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -6,7 +8,7 @@ import 'package:intl/intl.dart';
 part 'news_model.g.dart';
 
 @HiveType(typeId: 0)
-class NewsModel {
+class NewsModel extends Equatable {
   @HiveField(0)
   final Source source;
 
@@ -26,9 +28,9 @@ class NewsModel {
   final DateTime publishedDate;
 
   @HiveField(6)
-  final String content;
+  final String? content;
 
-  NewsModel(
+  const NewsModel(
       {required this.source,
       required this.author,
       required this.title,
@@ -39,14 +41,18 @@ class NewsModel {
 
   factory NewsModel.fromJson(Map<String, dynamic> json) {
     return NewsModel(
-        source: json['source'],
+        source: (SourceModel.fromJson(json['source']).toSource),
         author: json['author'],
         title: json['title'],
         description: json['description'],
         urlToImage: json['urlToImage'],
-        publishedDate: json['publishedAt'],
+        publishedDate: DateTime.parse(json['publishedAt']),
         content: json['content']);
   }
+
+  @override
+  List<Object?> get props =>
+      [source, author, title, description, urlToImage, publishedDate, content];
 }
 
 extension NewsModelExtension on NewsModel {

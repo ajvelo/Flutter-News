@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news/features/news/data/datasources/get_news_remote_data_source.dart';
 import 'package:flutter_news/features/news/data/models/news_model.dart';
 import 'package:flutter_news/features/news/data/models/source_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';

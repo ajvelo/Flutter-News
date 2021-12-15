@@ -1,20 +1,21 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_news/core/constants.dart';
 import 'package:flutter_news/core/exceptions.dart';
 import 'package:flutter_news/features/news/data/models/news_model.dart';
 import 'package:http/http.dart' as http;
 
-abstract class GetNewsRemoteDataSource {
+abstract class NewsRemoteDataSource {
   Future<List<NewsModel>> getNews();
 }
 
-class GetNewsRemoteDatasSourceImpl implements GetNewsRemoteDataSource {
+class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
   final http.Client client;
 
   final baseUrl = "https://newsapi.org/v2";
 
-  GetNewsRemoteDatasSourceImpl({required this.client});
+  NewsRemoteDataSourceImpl({required this.client});
   @override
   Future<List<NewsModel>> getNews() => _getDataFromUrl(
       path: "/top-headlines?country=gb&apiKey=${Constants.apiKey}");
@@ -22,25 +23,25 @@ class GetNewsRemoteDatasSourceImpl implements GetNewsRemoteDataSource {
   Future<List<NewsModel>> _getDataFromUrl({required String path}) async {
     try {
       final response = await client.get(Uri.parse(path), headers: {
-        'Content-Type': 'application/json',
+        HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
       });
       switch (response.statusCode) {
         case 200:
           final results = (json.decode(response.body)['articles']);
           final news =
               (results as List).map((e) => NewsModel.fromJson(e)).toList();
-          print(news);
           return news;
         case 400:
-          throw ServerException(message: 'Bad Request');
+          throw const ServerException(message: 'Bad Request');
         case 401:
-          throw ServerException(message: 'Unauthorized');
+          throw const ServerException(message: 'Unauthorized');
         case 500:
-          throw ServerException(message: 'Internal Server Error');
+          throw const ServerException(message: 'Internal Server Error');
         default:
-          throw ServerException(message: 'Unknown Error');
+          throw const ServerException(message: 'Unknown Error');
       }
     } catch (e) {
+      if (e is ServerException) rethrow;
       throw e.toString();
     }
   }

@@ -23,7 +23,7 @@ class NewsModelAdapter extends TypeAdapter<NewsModel> {
       description: fields[3] as String,
       urlToImage: fields[4] as String?,
       publishedDate: fields[5] as DateTime,
-      content: fields[6] as String,
+      content: fields[6] as String?,
     );
   }
 

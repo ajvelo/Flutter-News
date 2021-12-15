@@ -8,7 +8,7 @@ class News extends Equatable {
   final String description;
   final String? urlToImage;
   final String publishedDate;
-  final String content;
+  final String? content;
 
   const News(
       {required this.author,

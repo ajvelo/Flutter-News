@@ -1,14 +1,15 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_news/features/news/domain/entities/source.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 part 'source_model.g.dart';
 
 @HiveType(typeId: 1)
-class SourceModel {
+class SourceModel extends Equatable {
   @HiveField(0)
   final String name;
 
-  SourceModel({
+  const SourceModel({
     required this.name,
   });
 
@@ -17,6 +18,9 @@ class SourceModel {
       name: json['name'],
     );
   }
+
+  @override
+  List<Object?> get props => [name];
 }
 
 extension SourceModelExtension on SourceModel {

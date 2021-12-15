@@ -1,4 +1,6 @@
-import 'package:flutter_news/features/news/data/datasources/get_news_remote_data_source.dart';
+import 'package:flutter_news/features/news/data/datasources/news_hive_helper.dart';
+import 'package:flutter_news/features/news/data/datasources/news_local_data_source.dart';
+import 'package:flutter_news/features/news/data/datasources/news_remote_data_source.dart';
 import 'package:flutter_news/features/news/data/repositories/news_repository_impl.dart';
 import 'package:flutter_news/features/news/domain/repositories/news_repository.dart';
 import 'package:flutter_news/features/news/domain/usecases/get_news.dart';
@@ -13,12 +15,14 @@ Future<void> init() async {
   // Data
 
   // DataSources
-  sl.registerLazySingleton<GetNewsRemoteDataSource>(
-      () => GetNewsRemoteDatasSourceImpl(client: sl()));
+  sl.registerLazySingleton<NewsRemoteDataSource>(
+      () => NewsRemoteDataSourceImpl(client: sl()));
+  sl.registerLazySingleton<NewsLocalDataSource>(
+      () => NewsLocalDataSourceImpl(hive: sl()));
 
   // Repositories
   sl.registerLazySingleton<NewsRepository>(
-      () => NewsRepositoryImpl(remoteDataSource: sl()));
+      () => NewsRepositoryImpl(remoteDataSource: sl(), localDataSource: sl()));
 
   // Domain
 
@@ -29,4 +33,5 @@ Future<void> init() async {
 
   // Misc
   sl.registerLazySingleton(() => http.Client());
+  sl.registerLazySingleton(() => NewsHiveHelper());
 }
