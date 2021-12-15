@@ -17,7 +17,7 @@ class NewsModelAdapter extends TypeAdapter<NewsModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return NewsModel(
-      source: fields[0] as Source,
+      source: fields[0] as SourceModel,
       author: fields[1] as String?,
       title: fields[2] as String,
       description: fields[3] as String,

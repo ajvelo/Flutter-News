@@ -22,7 +22,7 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
 
   Future<List<NewsModel>> _getDataFromUrl({required String path}) async {
     try {
-      final response = await client.get(Uri.parse(path), headers: {
+      final response = await client.get(Uri.parse(baseUrl + path), headers: {
         HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
       });
       switch (response.statusCode) {

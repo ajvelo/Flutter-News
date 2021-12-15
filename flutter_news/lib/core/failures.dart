@@ -10,4 +10,7 @@ class ServerFailure extends Failure {
   ServerFailure({required this.message});
 }
 
-class CacheFailure extends Failure {}
+class CacheFailure extends Failure {
+  final String message;
+  CacheFailure({required this.message});
+}

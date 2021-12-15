@@ -10,7 +10,7 @@ part 'news_model.g.dart';
 @HiveType(typeId: 0)
 class NewsModel extends Equatable {
   @HiveField(0)
-  final Source source;
+  final SourceModel source;
 
   @HiveField(1)
   final String? author;
@@ -41,7 +41,7 @@ class NewsModel extends Equatable {
 
   factory NewsModel.fromJson(Map<String, dynamic> json) {
     return NewsModel(
-        source: (SourceModel.fromJson(json['source']).toSource),
+        source: (SourceModel.fromJson(json['source'])),
         author: json['author'],
         title: json['title'],
         description: json['description'],
@@ -65,6 +65,6 @@ extension NewsModelExtension on NewsModel {
         urlToImage: urlToImage,
         publishedDate: formattedDate,
         content: content,
-        source: source);
+        source: source.toSource);
   }
 }
