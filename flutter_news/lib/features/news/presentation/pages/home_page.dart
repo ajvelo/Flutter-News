@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_news/features/news/domain/entities/news.dart';
 import 'package:flutter_news/features/news/presentation/bloc/news_bloc.dart';
+import 'package:flutter_news/features/news/presentation/widgets/headlines.dart';
 import 'package:flutter_news/features/news/presentation/widgets/news_of_the_day.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,14 +18,13 @@ class HomePage extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (state is NewsLoadedWithSuccess) {
-          final news = state.news;
+          final news = state.news.sublist(1);
           final newsOfTheDay = state.news.first;
           return Column(
             children: [
               SizedBox(
                 height: size.height / 2,
                 child: Stack(
-                  fit: StackFit.expand,
                   children: [NewsOfTheDay(newsOfTheDay: newsOfTheDay)],
                 ),
               ),
@@ -39,42 +40,9 @@ class HomePage extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline1),
                 ),
               ),
-              const SizedBox(
-                height: 8,
-              ),
               Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: news.length,
-                  itemBuilder: (context, index) {
-                    final newsSingle = news[index];
-                    return Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Container(
-                        child: Column(
-                          children: [
-                            Container(
-                              height: size.height / 6,
-                              width: size.width / 1.6,
-                              decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(32),
-                                  image: DecorationImage(
-                                      fit: BoxFit.fill,
-                                      image: newsSingle.urlToImage != null
-                                          ? NetworkImage(newsSingle.urlToImage!)
-                                          : const AssetImage(
-                                                  'assets/images/breaking_news.png')
-                                              as ImageProvider)),
-                            ),
-                            Text(newsSingle.publishedDate.toIso8601String())
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              )
+                child: Headlines(news: news, size: size),
+              ),
             ],
           );
         } else if (state is NewsLoadedWithError) {

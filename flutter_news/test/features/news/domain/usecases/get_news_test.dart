@@ -26,7 +26,7 @@ main() {
         urlToImage: "https://img.youtube.com/vi/CA-Xe_M8mpA/maxresdefault.jpg",
         publishedDate: DateTime.now(),
         content: "content",
-        source: Source(name: "name"))
+        source: const Source(name: "name"))
   ];
 
   group('Retrieve news from repository', () {
