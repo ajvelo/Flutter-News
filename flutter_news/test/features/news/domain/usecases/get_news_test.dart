@@ -19,12 +19,12 @@ main() {
   });
 
   final news = [
-    const News(
+    News(
         author: "author",
         title: "title",
         description: "description",
         urlToImage: "https://img.youtube.com/vi/CA-Xe_M8mpA/maxresdefault.jpg",
-        publishedDate: "2021-12-14T16:42:00Z",
+        publishedDate: DateTime.now(),
         content: "content",
         source: Source(name: "name"))
   ];

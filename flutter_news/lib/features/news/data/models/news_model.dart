@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_news/features/news/data/models/source_model.dart';
 import 'package:flutter_news/features/news/domain/entities/news.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:intl/intl.dart';
 
 part 'news_model.g.dart';
 
@@ -55,15 +54,12 @@ class NewsModel extends Equatable {
 }
 
 extension NewsModelExtension on NewsModel {
-  News get toNews {
-    final formattedDate = (DateFormat.yMMMMEEEEd().format(publishedDate));
-    return News(
-        author: author,
-        title: title,
-        description: description,
-        urlToImage: urlToImage,
-        publishedDate: formattedDate,
-        content: content,
-        source: source.toSource);
-  }
+  News get toNews => News(
+      author: author,
+      title: title,
+      description: description,
+      urlToImage: urlToImage,
+      publishedDate: publishedDate,
+      content: content,
+      source: source.toSource);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_news/core/themes.dart';
 import 'package:flutter_news/features/news/data/models/news_model.dart';
 import 'package:flutter_news/features/news/data/models/source_model.dart';
 import 'package:flutter_news/features/news/presentation/bloc/news_bloc.dart';
@@ -29,10 +30,8 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        title: 'Flutter News',
+        theme: Themes.appTheme,
         home: const HomePage(),
       ),
     );

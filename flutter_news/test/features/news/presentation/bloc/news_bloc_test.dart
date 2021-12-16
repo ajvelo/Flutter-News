@@ -20,7 +20,7 @@ void main() {
         title: 'title',
         description: 'description',
         urlToImage: 'urlToImage',
-        publishedDate: DateTime.now().toIso8601String(),
+        publishedDate: DateTime.now(),
         content: 'content',
         source: const Source(name: 'name')),
     News(
@@ -28,7 +28,7 @@ void main() {
         title: 'title 2',
         description: 'description 2',
         urlToImage: 'urlToImage 2',
-        publishedDate: DateTime.now().toIso8601String(),
+        publishedDate: DateTime.now(),
         content: 'content 2',
         source: const Source(name: 'name 2'))
   ];
