@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_news/features/news/domain/entities/news.dart';
 import 'package:flutter_news/features/news/presentation/bloc/news_bloc.dart';
+import 'package:flutter_news/features/news/presentation/pages/detail_page.dart';
 import 'package:flutter_news/features/news/presentation/widgets/headlines.dart';
 import 'package:flutter_news/features/news/presentation/widgets/news_of_the_day.dart';
 
@@ -25,7 +25,20 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: size.height / 2,
                 child: Stack(
-                  children: [NewsOfTheDay(newsOfTheDay: newsOfTheDay)],
+                  children: [
+                    NewsOfTheDay(
+                      newsOfTheDay: newsOfTheDay,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailPage(
+                                news: newsOfTheDay,
+                              ),
+                            ));
+                      },
+                    )
+                  ],
                 ),
               ),
               const SizedBox(

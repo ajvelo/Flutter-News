@@ -7,9 +7,11 @@ class NewsOfTheDay extends StatelessWidget {
   const NewsOfTheDay({
     Key? key,
     required this.newsOfTheDay,
+    required this.onPressed,
   }) : super(key: key);
 
   final News newsOfTheDay;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -60,25 +62,28 @@ class NewsOfTheDay extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'Learn more',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline2!
-                        .copyWith(color: Colours.kTextColorOnDark),
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  const Icon(
-                    Icons.arrow_forward_rounded,
-                    color: Colours.kTextColorOnDark,
-                    size: 24,
-                  )
-                ],
+              GestureDetector(
+                onTap: onPressed,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Learn more',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline2!
+                          .copyWith(color: Colours.kTextColorOnDark),
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    const Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colours.kTextColorOnDark,
+                      size: 24,
+                    )
+                  ],
+                ),
               )
             ],
           ),
