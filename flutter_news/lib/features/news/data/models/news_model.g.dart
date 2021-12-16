@@ -20,7 +20,7 @@ class NewsModelAdapter extends TypeAdapter<NewsModel> {
       source: fields[0] as SourceModel,
       author: fields[1] as String?,
       title: fields[2] as String,
-      description: fields[3] as String,
+      description: fields[3] as String?,
       urlToImage: fields[4] as String?,
       publishedDate: fields[5] as DateTime,
       content: fields[6] as String?,

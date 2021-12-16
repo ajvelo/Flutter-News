@@ -29,6 +29,8 @@ class NewsRepositoryImpl implements NewsRepository {
       } on CacheException {
         return Left(ServerFailure(message: error.message));
       }
+    } catch (error) {
+      return Left(ServerFailure(message: error.toString()));
     }
   }
 }

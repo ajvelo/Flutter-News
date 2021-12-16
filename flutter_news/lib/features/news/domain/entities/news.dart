@@ -5,7 +5,7 @@ class News extends Equatable {
   final Source source;
   final String? author;
   final String title;
-  final String description;
+  final String? description;
   final String? urlToImage;
   final String publishedDate;
   final String? content;

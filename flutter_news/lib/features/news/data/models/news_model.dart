@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_news/features/news/data/models/source_model.dart';
 import 'package:flutter_news/features/news/domain/entities/news.dart';
-import 'package:flutter_news/features/news/domain/entities/source.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 
@@ -19,7 +18,7 @@ class NewsModel extends Equatable {
   final String title;
 
   @HiveField(3)
-  final String description;
+  final String? description;
 
   @HiveField(4)
   final String? urlToImage;

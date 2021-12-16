@@ -1,15 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter_news/features/news/data/models/news_model.dart';
+import 'package:flutter_news/features/news/data/models/source_model.dart';
 import 'package:flutter_news/features/news/domain/entities/news.dart';
-import 'package:flutter_news/features/news/domain/entities/source.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../fixtures/fixture_reader.dart';
 
 void main() {
   final model = NewsModel(
-      source: const Source(name: "The Guardian"),
+      source: const SourceModel(name: "The Guardian"),
       author: "Graeme Wearden",
       title:
           "UK inflation soars to 10-year high of 5.1% as cost of living squeeze tightens – business live - The Guardian",
