@@ -24,7 +24,7 @@ class DetailPage extends StatelessWidget {
                 ClipPath(
                   clipper: OvalBottomClipper(),
                   child: Container(
-                    height: size.height / 2,
+                    height: size.height / 2.5,
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             colorFilter: ColorFilter.mode(
@@ -68,7 +68,6 @@ class DetailPage extends StatelessWidget {
                 )
               ],
             ),
-            // const SizedBox(height: 16),
             SizedBox(
               height: size.height / 2,
               width: size.width,

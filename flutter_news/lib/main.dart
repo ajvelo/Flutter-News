@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_news/core/themes.dart';
 import 'package:flutter_news/features/news/data/models/news_model.dart';
 import 'package:flutter_news/features/news/data/models/source_model.dart';
-import 'package:flutter_news/features/news/domain/params/news_params.dart';
 import 'package:flutter_news/features/news/presentation/bloc/news_bloc.dart';
 import 'package:flutter_news/features/news/presentation/pages/home_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -26,9 +25,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<NewsBloc>(
-          create: (context) => di.sl<NewsBloc>()
-            ..add(GetNewsEvent(
-                parameters: NewsParams(category: 'technology', country: 'GB'))),
+          create: (context) => di.sl<NewsBloc>(),
         )
       ],
       child: MaterialApp(
