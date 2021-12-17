@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_news/features/news/domain/entities/news.dart';
 import 'package:flutter_news/features/news/presentation/bloc/news_bloc.dart';
 import 'package:flutter_news/features/news/presentation/pages/detail_page.dart';
 import 'package:flutter_news/features/news/presentation/widgets/headlines.dart';
@@ -7,6 +8,14 @@ import 'package:flutter_news/features/news/presentation/widgets/news_of_the_day.
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  onNewsSelected({required News news, required BuildContext context}) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DetailPage(news: news),
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +37,8 @@ class HomePage extends StatelessWidget {
                   children: [
                     NewsOfTheDay(
                       newsOfTheDay: newsOfTheDay,
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DetailPage(
-                                news: newsOfTheDay,
-                              ),
-                            ));
+                      onPressed: (News news) {
+                        onNewsSelected(news: news, context: context);
                       },
                     )
                   ],
@@ -54,7 +57,13 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Headlines(news: news, size: size),
+                child: Headlines(
+                  news: news,
+                  size: size,
+                  onPressed: (news) {
+                    onNewsSelected(news: news, context: context);
+                  },
+                ),
               ),
             ],
           );

@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_news/core/failures.dart';
 import 'package:flutter_news/features/news/domain/entities/news.dart';
+import 'package:flutter_news/features/news/domain/params/news_params.dart';
 import 'package:flutter_news/features/news/domain/usecases/get_news.dart';
 import 'package:meta/meta.dart';
 
@@ -17,7 +18,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   _onGetNewsRequested(GetNewsEvent event, Emitter<NewsState> emit) async {
     emit(NewsLoading());
 
-    final result = await getNewsUsecase.execute();
+    final result = await getNewsUsecase.execute(parameters: event.parameters);
     emit(result.fold((l) => NewsLoadedWithError(message: _getErrorMessage(l)),
         (r) => NewsLoadedWithSuccess(news: r)));
   }

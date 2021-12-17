@@ -11,7 +11,7 @@ class NewsOfTheDay extends StatelessWidget {
   }) : super(key: key);
 
   final News newsOfTheDay;
-  final VoidCallback onPressed;
+  final Function(News news) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class NewsOfTheDay extends StatelessWidget {
                 height: 16,
               ),
               GestureDetector(
-                onTap: onPressed,
+                onTap: () => onPressed(newsOfTheDay),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

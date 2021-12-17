@@ -5,6 +5,7 @@ import 'package:flutter_news/features/news/data/models/news_model.dart';
 import 'package:flutter_news/features/news/domain/entities/news.dart';
 import 'package:flutter_news/core/failures.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_news/features/news/domain/params/news_params.dart';
 import 'package:flutter_news/features/news/domain/repositories/news_repository.dart';
 
 class NewsRepositoryImpl implements NewsRepository {
@@ -15,9 +16,10 @@ class NewsRepositoryImpl implements NewsRepository {
       {required this.localDataSource, required this.remoteDataSource});
 
   @override
-  Future<Either<Failure, List<News>>> getNews() async {
+  Future<Either<Failure, List<News>>> getNews(
+      {required NewsParams parameters}) async {
     try {
-      final newsModels = await remoteDataSource.getNews();
+      final newsModels = await remoteDataSource.getNews(parameters: parameters);
       await localDataSource.saveNews(newsModels);
       final news = newsModels.map((e) => e.toNews).toList();
       return Right(news);

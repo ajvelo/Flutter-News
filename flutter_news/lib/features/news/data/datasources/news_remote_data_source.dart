@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter_news/core/constants.dart';
 import 'package:flutter_news/core/exceptions.dart';
 import 'package:flutter_news/features/news/data/models/news_model.dart';
+import 'package:flutter_news/features/news/domain/params/news_params.dart';
 import 'package:http/http.dart' as http;
 
 abstract class NewsRemoteDataSource {
-  Future<List<NewsModel>> getNews();
+  Future<List<NewsModel>> getNews({required NewsParams parameters});
 }
 
 class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
@@ -16,9 +16,13 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
   final baseUrl = "https://newsapi.org/v2";
 
   NewsRemoteDataSourceImpl({required this.client});
+
   @override
-  Future<List<NewsModel>> getNews() => _getDataFromUrl(
-      path: "/top-headlines?country=gb&apiKey=${Constants.apiKey}");
+  Future<
+      List<
+          NewsModel>> getNews({required NewsParams parameters}) => _getDataFromUrl(
+      path:
+          "/top-headlines?country=${parameters.country}&category=${parameters.category}&apiKey=${Constants.apiKey}");
 
   Future<List<NewsModel>> _getDataFromUrl({required String path}) async {
     try {

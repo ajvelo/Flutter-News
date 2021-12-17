@@ -1,7 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter_news/core/exceptions.dart';
 import 'package:flutter_news/features/news/data/datasources/news_remote_data_source.dart';
+import 'package:flutter_news/features/news/domain/params/news_params.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:http/http.dart' as http;
@@ -32,6 +32,8 @@ void main() {
             ));
   }
 
+  final newsParams = NewsParams(country: 'GB', category: 'health');
+
   group('GET News', () {
     test(
         'Should return a list of news models when a status code of 200 is received',
@@ -39,7 +41,7 @@ void main() {
       // Arrange
       setUpMockHttpClient('news.json', 200);
       // Act
-      final news = await remoteDataSourceImpl.getNews();
+      final news = await remoteDataSourceImpl.getNews(parameters: newsParams);
       // Assert
       expect(news.length, equals(20));
     });
@@ -51,7 +53,7 @@ void main() {
       // Act
       // Assert
       expect(
-          () => remoteDataSourceImpl.getNews(),
+          () => remoteDataSourceImpl.getNews(parameters: newsParams),
           throwsA(predicate(
               (e) => e is ServerException && e.message == 'Bad Request')));
     });
@@ -63,7 +65,7 @@ void main() {
       // Act
       // Assert
       expect(
-          () => remoteDataSourceImpl.getNews(),
+          () => remoteDataSourceImpl.getNews(parameters: newsParams),
           throwsA(predicate(
               (e) => e is ServerException && e.message == 'Unauthorized')));
     });
@@ -75,7 +77,7 @@ void main() {
       // Act
       // Assert
       expect(
-          () => remoteDataSourceImpl.getNews(),
+          () => remoteDataSourceImpl.getNews(parameters: newsParams),
           throwsA(predicate((e) =>
               e is ServerException && e.message == 'Internal Server Error')));
     });
@@ -88,7 +90,7 @@ void main() {
       // Act
       // Assert
       expect(
-          () => remoteDataSourceImpl.getNews(),
+          () => remoteDataSourceImpl.getNews(parameters: newsParams),
           throwsA(predicate(
               (e) => e is ServerException && e.message == 'Unknown Error')));
     });
