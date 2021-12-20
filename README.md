@@ -54,14 +54,13 @@
 
 
 
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 <div>
 <p align="center">
   <a href="https://github.com/ajvelo/Flutter-News">
-      <img src="images/screenshot.png" alt="Screenshot" width="414" height="896">
-      <img src="images/screenshot2.png" alt="Screenshot2" width="414" height="896">
+      <img src="images/screenshot.png" alt="Screenshot" width="207" height="448">
+      <img src="images/screenshot2.png" alt="Screenshot2" width="207" height="448">
   </a>
 </p>
 </div>
@@ -76,7 +75,7 @@ There are a number of Flutter tutorials out there that illustrate how to build a
 
 There are certainly a number of ways that you can implementation your application such that you abide by the right design principles (SOLID, DRY, YAGNI etc.). However, there is no <strong>one</strong> approach that works better than the others. There is only those that are more modularised. Hence, the approach you should take depends on the project, its requirements and its constraints. For example, if you needed to create an MVP in a short amount of time you certainly wouldn't want to implement an architecture that conformed to TDD and was made of discrete components. You would want to use something that required little boiler-plate code and that should be developed quickly.
 
-With that said, this approach here is not meant for MVP applications but rather for large-scale applications that require unit testing and components that aren't coupled together. I discuss in detail what the approach entails and how and why modules are organised and created in the fashion they are. You can read about it at the README<a href="https://github.com/ajvelo/Flutter-News/tree/master/flutter_news">here</a>.
+With that said, this approach here is not meant for MVP applications but rather for large-scale applications that require unit testing and components that aren't coupled together. I discuss in detail what the approach entails and how and why modules are organised and created in the fashion they are. You can read about it at the README <a href="https://github.com/ajvelo/Flutter-News/tree/master/flutter_news">here</a>.
 
 ### Built With
 
@@ -130,7 +129,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.md` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
