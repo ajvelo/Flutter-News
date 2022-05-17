@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
         BlocProvider.of<NewsBloc>(context).add(GetNewsEvent(
             parameters: NewsParams(
                 country:
-                    WidgetsBinding.instance?.window.locale.countryCode ?? 'GB',
+                    WidgetsBinding.instance.window.locale.countryCode ?? 'GB',
                 category: CategoryType.values[_selectedIndex].categoryName)));
       }
     });
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     BlocProvider.of<NewsBloc>(context).add(GetNewsEvent(
         parameters: NewsParams(
-            country: WidgetsBinding.instance?.window.locale.countryCode ?? 'GB',
+            country: WidgetsBinding.instance.window.locale.countryCode ?? 'GB',
             category: CategoryType.general.categoryName)));
   }
 
