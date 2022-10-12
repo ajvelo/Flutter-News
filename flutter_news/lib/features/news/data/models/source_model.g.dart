@@ -17,7 +17,7 @@ class SourceModelAdapter extends TypeAdapter<SourceModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return SourceModel(
-      name: fields[0] as String,
+      name: fields[0] as String?,
     );
   }
 

@@ -40,7 +40,7 @@ class NewsModel extends Equatable {
   factory NewsModel.fromJson(Map<String, dynamic> json) {
     return NewsModel(
         source: (SourceModel.fromJson(json['source'])),
-        author: json['author'],
+        author: json['author'] == null ? "Not Found" : json["author"],
         title: json['title'],
         description: json['description'],
         urlToImage: json['urlToImage'],

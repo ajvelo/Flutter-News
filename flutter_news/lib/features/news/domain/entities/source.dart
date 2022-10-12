@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Source extends Equatable {
-  final String name;
+  final String? name;
 
   const Source({required this.name});
   @override

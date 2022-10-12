@@ -7,7 +7,7 @@ part 'source_model.g.dart';
 @HiveType(typeId: 1)
 class SourceModel extends Equatable {
   @HiveField(0)
-  final String name;
+  final String? name;
 
   const SourceModel({
     required this.name,
@@ -15,7 +15,7 @@ class SourceModel extends Equatable {
 
   factory SourceModel.fromJson(Map<String, dynamic> json) {
     return SourceModel(
-      name: json['name'],
+      name: json['name'] == null ? "Unknown" : json["name"],
     );
   }
 
