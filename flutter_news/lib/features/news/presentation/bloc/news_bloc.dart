@@ -1,10 +1,9 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_news/core/failures.dart';
 import 'package:flutter_news/features/news/domain/entities/news.dart';
 import 'package:flutter_news/features/news/domain/params/news_params.dart';
 import 'package:flutter_news/features/news/domain/usecases/get_news.dart';
-import 'package:meta/meta.dart';
 
 part 'news_event.dart';
 part 'news_state.dart';

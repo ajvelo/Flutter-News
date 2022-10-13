@@ -1,6 +1,5 @@
 part of 'news_bloc.dart';
 
-@immutable
 abstract class NewsState extends Equatable {}
 
 class NewsInitial extends NewsState {
