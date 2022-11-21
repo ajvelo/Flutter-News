@@ -17,7 +17,7 @@
   <h3 align="center">Flutter News</h3>
 
   <p align="center">
-    A Flutter project detailing how to implement an application using TDD and clean architecture.
+    A Flutter project detailing how to build an application using TDD and clean architecture.
     <br />
     <a href="https://github.com/ajvelo/Flutter-News"><strong>Explore the docs »</strong></a>
     <br />
@@ -64,6 +64,12 @@
   </a>
 </p>
 </div>
+
+### Before We Start
+
+This application uses `BLoC`. Providing you are using Clean Architecture in the intended manner, it ultimately doesn't matter what state management solution/framework you choose as you can easily swap one out of the other as you'll find below.
+
+If you want to view a similar project that uses `Riverpod` please click <a href="https://github.com/ajvelo/Flutter-Films">here</a>
 
 There are a number of Flutter tutorials out there that illustrate how to build an application with different state management solutions such as `BLoC`, `GetX`, `Riverpod` etc. However most are incomplete, they do not show how to integrate networking and make API calls or how tests can be written. In short, they do not provide an overall solution for clean architecture implementation. This project aims to give an insight into how you would create a production-level application that is scalable, testable and written with clean code.
 
