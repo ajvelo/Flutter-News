@@ -9,19 +9,19 @@ class Themes {
       highlightColor: Colors.transparent,
       primaryColor: Colors.blue,
       textTheme: TextTheme(
-          headline1: GoogleFonts.lato(
+          displayLarge: GoogleFonts.lato(
               color: Colours.ktextColorOnLight,
               fontSize: 24,
               fontWeight: FontWeight.bold),
-          headline2: GoogleFonts.lato(
+          displayMedium: GoogleFonts.lato(
               color: Colours.ktextColorOnLight,
               fontSize: 20,
               fontWeight: FontWeight.bold),
-          bodyText1: GoogleFonts.lato(
+          bodyLarge: GoogleFonts.lato(
               color: Colours.ktextColorOnLight,
               fontSize: 16,
               fontWeight: FontWeight.normal),
-          bodyText2: GoogleFonts.lato(
+          bodyMedium: GoogleFonts.lato(
               color: Colours.ktextColorOnLight,
               fontSize: 12,
               fontWeight: FontWeight.normal)));

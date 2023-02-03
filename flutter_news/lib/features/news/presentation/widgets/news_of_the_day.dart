@@ -44,7 +44,7 @@ class NewsOfTheDay extends StatelessWidget {
                     'News of the day',
                     style: Theme.of(context)
                         .textTheme
-                        .headline2!
+                        .displayMedium!
                         .copyWith(color: Colours.kTextColorOnDark),
                   ),
                 ),
@@ -56,7 +56,7 @@ class NewsOfTheDay extends StatelessWidget {
                 newsOfTheDay.title,
                 style: Theme.of(context)
                     .textTheme
-                    .headline1!
+                    .displayLarge!
                     .copyWith(color: Colours.kTextColorOnDark),
               ),
               const SizedBox(
@@ -71,7 +71,7 @@ class NewsOfTheDay extends StatelessWidget {
                       'Learn more',
                       style: Theme.of(context)
                           .textTheme
-                          .headline2!
+                          .displayMedium!
                           .copyWith(color: Colours.kTextColorOnDark),
                     ),
                     const SizedBox(

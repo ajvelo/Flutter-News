@@ -20,7 +20,7 @@ class CategoryChips extends StatelessWidget {
                 CategoryType.values[index].categoryName,
               ),
               avatar: Icon(CategoryType.values[index].categoryImage),
-              labelStyle: Theme.of(context).textTheme.headline2,
+              labelStyle: Theme.of(context).textTheme.displayMedium,
               padding: const EdgeInsets.all(16),
               onSelected: (selected) => onSelected(index, selected),
               selected: selectedIndex == index);

@@ -46,7 +46,7 @@ class DetailPage extends StatelessWidget {
                             news.title,
                             style: Theme.of(context)
                                 .textTheme
-                                .headline1!
+                                .displayLarge!
                                 .copyWith(color: Colours.kTextColorOnDark),
                           ),
                           const SizedBox(height: 32),
@@ -55,7 +55,7 @@ class DetailPage extends StatelessWidget {
                                   news.description!,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText1!
+                                      .bodyLarge!
                                       .copyWith(
                                           color: Colours.kTextColorOnDark),
                                 )
@@ -80,7 +80,7 @@ class DetailPage extends StatelessWidget {
                     children: [
                       Text(
                         DateFormat.yMMMMEEEEd().format(news.publishedDate),
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       const SizedBox(height: 16),
                       news.author != null
@@ -88,20 +88,20 @@ class DetailPage extends StatelessWidget {
                               news.author!,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText1!
+                                  .bodyLarge!
                                   .copyWith(color: Colors.grey[700]),
                             )
                           : const SizedBox.shrink(),
                       const SizedBox(height: 16),
                       Text(
                         news.title,
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       const SizedBox(height: 16),
                       news.content != null
                           ? Text(
                               news.content!,
-                              style: Theme.of(context).textTheme.bodyText1,
+                              style: Theme.of(context).textTheme.bodyLarge,
                             )
                           : const SizedBox.shrink(),
                     ],

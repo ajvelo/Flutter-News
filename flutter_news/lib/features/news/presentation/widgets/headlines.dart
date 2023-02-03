@@ -47,7 +47,7 @@ class Headlines extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(
                     newsSingle.title,
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -56,7 +56,7 @@ class Headlines extends StatelessWidget {
                     "${dateDifference.toString()} hours ago",
                     style: Theme.of(context)
                         .textTheme
-                        .bodyText1!
+                        .bodyLarge!
                         .copyWith(color: Colors.grey[700]),
                   ),
                   const SizedBox(height: 4),
@@ -64,7 +64,7 @@ class Headlines extends StatelessWidget {
                     "Source: ${newsSingle.source.name}",
                     style: Theme.of(context)
                         .textTheme
-                        .bodyText1!
+                        .bodyLarge!
                         .copyWith(color: Colors.grey[700]),
                   ),
                 ],
