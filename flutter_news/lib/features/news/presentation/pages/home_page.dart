@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_news/features/news/domain/entities/news.dart';
 import 'package:flutter_news/features/news/domain/params/news_params.dart';
@@ -25,26 +26,21 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 
-  onCategorySelected({required int index, required bool selected}) {
+  onCategorySelected(
+      {required int index,
+      required bool selected,
+      required BuildContext context}) {
     setState(() {
       if (selected) {
         _selectedIndex = index;
         BlocProvider.of<NewsBloc>(context).add(GetNewsEvent(
             parameters: NewsParams(
-                country:
-                    WidgetsBinding.instance.window.locale.countryCode ?? 'GB',
+                country: WidgetsBinding
+                        .instance.platformDispatcher.locale.countryCode ??
+                    'GB',
                 category: CategoryType.values[_selectedIndex].categoryName)));
       }
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<NewsBloc>(context).add(GetNewsEvent(
-        parameters: NewsParams(
-            country: WidgetsBinding.instance.window.locale.countryCode ?? 'GB',
-            category: CategoryType.general.categoryName)));
   }
 
   @override
@@ -87,8 +83,8 @@ class _HomePageState extends State<HomePage> {
                 height: 96,
                 child: CategoryChips(
                   selectedIndex: _selectedIndex,
-                  onSelected: (index, selected) =>
-                      onCategorySelected(index: index, selected: selected),
+                  onSelected: (index, selected) => onCategorySelected(
+                      index: index, selected: selected, context: context),
                 ),
               ),
               Expanded(
